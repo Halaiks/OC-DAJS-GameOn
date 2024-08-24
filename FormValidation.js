@@ -16,28 +16,6 @@ function resetFormErrors() {
   });
 }
 
-function validateFirstName() {
-  const firstName = document.getElementById('first');
-  const firstError = document.getElementById('first-error')
-  if (firstName.value.trim().length < 2) {
-    firstError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
-    firstName.classList.add('error');
-    return false
-  }
-  return true
-}
-
-function validateLastName() {
-  const lastName = document.getElementById('last');
-  const lastError = document.getElementById('last-error')
-  if (lastName.value.trim().length < 2) {
-    lastError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
-    lastName.classList.add('error');
-    return false
-  }
-  return true
-}
-
 function validate(event) {
   event.preventDefault();  // Empêcher la soumission du formulaire
 
@@ -78,19 +56,18 @@ function validate(event) {
   let valid = true;
 
   // Vérifier le champ Prénom (minimum 2 caractères / n'est pas vide)
-  /*if (firstName.value.trim().length < 2) {
+  if (firstName.value.trim().length < 2) {
     firstError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
     firstName.classList.add('error');
     valid = false;
-  }*/
- valid=validateFirstName() && validateLastName()
+  }
 
   // Vérifier le champ Nom (minimum 2 caractères / n'est pas vide)
-  /*if (lastName.value.trim().length < 2) {
+  if (lastName.value.trim().length < 2) {
     lastError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
     lastName.classList.add('error');
     valid = false;
-  }*/
+  }
 
 
   // Vérifier le champ Email (format email)
