@@ -56,15 +56,19 @@ function validate(event) {
   let valid = true;
 
   // Vérifier le champ Prénom (minimum 2 caractères / n'est pas vide)
-  if (firstName.value.trim().length < 2) {
-    firstError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
+  if (firstName.value.trim().length < 2 || !/^[a-zA-ZÀ-ÿ]+$/.test(firstName.value.trim())) {
+    firstError.textContent = (firstName.value.trim().length < 2)
+      ? 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.'
+      : 'Le champ du prénom ne doit contenir que des lettres.';
     firstName.classList.add('error');
     valid = false;
   }
 
   // Vérifier le champ Nom (minimum 2 caractères / n'est pas vide)
-  if (lastName.value.trim().length < 2) {
-    lastError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+  if (lastName.value.trim().length < 2 || !/^[a-zA-ZÀ-ÿ]+$/.test(lastName.value.trim())) {
+    lastError.textContent = (lastName.value.trim().length < 2)
+      ? 'Veuillez entrer 2 caractères ou plus pour le champ du nom.'
+      : 'Le champ du nom ne doit contenir que des lettres.';
     lastName.classList.add('error');
     valid = false;
   }
@@ -135,7 +139,7 @@ function closeModal() {
   // Réinitialiser l'affichage du formulaire et du message de confirmation
   document.getElementById('confirmation-message').style.display = 'none';
   const form = document.querySelector('form[name="reserve"]');
-  form.style.display = 'block'; // Assurez-vous que le formulaire est affiché
+  form.style.display = 'block'; 
 }
 
 // Assigner la fonction de fermeture à la croix de la modale
